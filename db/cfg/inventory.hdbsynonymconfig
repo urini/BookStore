@@ -1,0 +1,8 @@
+{
+  "BOOK_INV": {
+    "target": {
+    	"grantor": "ServiceName_1",
+    	"object": "book_inventory.BOOK_INV"
+    }
+  }
+}

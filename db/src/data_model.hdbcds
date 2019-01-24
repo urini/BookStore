@@ -1,0 +1,25 @@
+context data_model {
+    entity Book {
+        key BookId        : Integer not null;
+            BookName      : String(100);
+            ISBN          : String(20);
+            Price         : Integer;
+            PriceCurrency : String(10);
+            AuthorName    : String(100);
+    };
+
+    entity Store {
+        key StoreId   : Integer not null;
+            StoreName : String(100);
+            City      : String(20);
+            Country   : String(20);
+    };
+
+    entity BookSales {
+    	key TransactionId   : Integer not null;
+            BookId          : Integer;
+            StoreId         : Integer;
+            TransactionDate : UTCDateTime;
+            Discount        : Integer;
+    };
+};

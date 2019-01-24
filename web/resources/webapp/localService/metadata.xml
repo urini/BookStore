@@ -1,0 +1,32 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="default">
+			<EntityType Name="booksalesType">
+				<Key>
+					<PropertyRef Name="ID"/>
+				</Key>
+				<Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="2147483647"/>
+				<Property Name="TransactionId" Type="Edm.Int32"/>
+				<Property Name="TransactionDate" Type="Edm.DateTime"/>
+				<Property Name="StoreId" Type="Edm.Int32"/>
+				<Property Name="BookId" Type="Edm.Int32"/>
+				<Property Name="StoreName" Type="Edm.String" MaxLength="100"/>
+				<Property Name="Country" Type="Edm.String" MaxLength="20"/>
+				<Property Name="City" Type="Edm.String" MaxLength="20"/>
+				<Property Name="BookName" Type="Edm.String" MaxLength="100"/>
+				<Property Name="ISBN" Type="Edm.String" MaxLength="20"/>
+				<Property Name="PriceCurrency" Type="Edm.String" MaxLength="10"/>
+				<Property Name="AuthorName" Type="Edm.String" MaxLength="100"/>
+				<Property Name="Price" Type="Edm.Int32"/>
+				<Property Name="Discount" Type="Edm.Int32"/>
+				<Property Name="FinalPrice" Type="Edm.Decimal" Precision="13" Scale="1"/>
+				<Property Name="COUNT_1" Type="Edm.Int32"/>
+			</EntityType>
+			<EntityContainer Name="v2" m:IsDefaultEntityContainer="true">
+				<EntitySet Name="booksales" EntityType="default.booksalesType"/>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,7 @@
+{
+  "BOOK_INV": {
+    "target": {
+      "object": "book_inventory.BOOK_INV"
+    }
+  }
+}

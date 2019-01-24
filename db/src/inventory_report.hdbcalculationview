@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="inventory_report" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false" runWithInvokerPrivileges="false">
+<descriptions defaultDescription="inventory_report"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="BOOK_INV">
+    <resourceUri>BOOK_INV</resourceUri>
+  </DataSource>
+  <DataSource id="data_model.Store">
+    <resourceUri>data_model.Store</resourceUri>
+  </DataSource>
+  <DataSource id="data_model.Book">
+    <resourceUri>data_model.Book</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="data_model.Book" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="BOOK_COUNT" aggregationType="sum">
+        <descriptions defaultDescription="BOOK_COUNT"/>
+      </viewAttribute>
+      <viewAttribute id="StoreName">
+        <descriptions defaultDescription="StoreName"/>
+      </viewAttribute>
+      <viewAttribute id="BOOK_ID"/>
+      <viewAttribute hidden="true" id="JOIN$STORE_ID$StoreId"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="BOOK_INV">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BOOK_COUNT" source="BOOK_COUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BOOK_ID" source="BOOK_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$STORE_ID$StoreId" source="STORE_ID"/>
+    </input>
+    <input node="data_model.Store">
+      <mapping xsi:type="Calculation:AttributeMapping" target="StoreName" source="StoreName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$STORE_ID$StoreId" source="StoreId"/>
+    </input>
+    <joinAttribute name="JOIN$STORE_ID$StoreId"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="data_model.Book" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="BookName">
+        <descriptions defaultDescription="BookName"/>
+      </viewAttribute>
+      <viewAttribute id="BOOK_COUNT" aggregationType="sum">
+        <descriptions defaultDescription="BOOK_COUNT"/>
+      </viewAttribute>
+      <viewAttribute id="StoreName">
+        <descriptions defaultDescription="StoreName"/>
+      </viewAttribute>
+      <viewAttribute hidden="true" id="JOIN$BookId$BOOK_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="data_model.Book">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BookName" source="BookName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BookId$BOOK_ID" source="BookId"/>
+    </input>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BOOK_COUNT" source="BOOK_COUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StoreName" source="StoreName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BookId$BOOK_ID" source="BOOK_ID"/>
+    </input>
+    <joinAttribute name="JOIN$BookId$BOOK_ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1_2">
+  <attributes>
+    <attribute id="BookName" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BookName"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="BookName"/>
+    </attribute>
+    <attribute id="StoreName" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="StoreName"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="StoreName"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="BOOK_COUNT" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="BOOK_COUNT"/>
+      <measureMapping columnObjectName="Join_1_2" columnName="BOOK_COUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="208"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="data_model.Book" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="BOOK_INV" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="data_model.Store" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

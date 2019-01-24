@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sales_report" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="sales_report"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="data_model.Book">
+    <resourceUri>data_model.Book</resourceUri>
+  </DataSource>
+  <DataSource id="data_model.BookSales">
+    <resourceUri>data_model.BookSales</resourceUri>
+  </DataSource>
+  <DataSource id="data_model.Store">
+    <resourceUri>data_model.Store</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="data_model.Store" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="BookId" aggregationType="sum">
+        <descriptions defaultDescription="BookId"/>
+      </viewAttribute>
+      <viewAttribute id="BookName">
+        <descriptions defaultDescription="BookName"/>
+      </viewAttribute>
+      <viewAttribute id="ISBN">
+        <descriptions defaultDescription="ISBN"/>
+      </viewAttribute>
+      <viewAttribute id="Price" aggregationType="sum">
+        <descriptions defaultDescription="Price"/>
+      </viewAttribute>
+      <viewAttribute id="PriceCurrency">
+        <descriptions defaultDescription="PriceCurrency"/>
+      </viewAttribute>
+      <viewAttribute id="AuthorName">
+        <descriptions defaultDescription="AuthorName"/>
+      </viewAttribute>
+      <viewAttribute id="TransactionId" aggregationType="sum">
+        <descriptions defaultDescription="TransactionId"/>
+      </viewAttribute>
+      <viewAttribute id="TransactionDate">
+        <descriptions defaultDescription="TransactionDate"/>
+      </viewAttribute>
+      <viewAttribute id="Discount" aggregationType="sum">
+        <descriptions defaultDescription="Discount"/>
+      </viewAttribute>
+      <viewAttribute id="TransactionId_1" aggregationType="sum">
+        <descriptions defaultDescription="TransactionId_1"/>
+      </viewAttribute>
+      <viewAttribute id="StoreId" aggregationType="sum">
+        <descriptions defaultDescription="StoreId"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="data_model.Book">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BookId" source="BookId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BookName" source="BookName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ISBN" source="ISBN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Price" source="Price"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceCurrency" source="PriceCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AuthorName" source="AuthorName"/>
+    </input>
+    <input node="data_model.BookSales">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionId" source="TransactionId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionDate" source="TransactionDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Discount" source="Discount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionId_1" source="TransactionId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StoreId" source="StoreId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BookId" source="BookId"/>
+    </input>
+    <joinAttribute name="BookId"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="data_model.Store" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="StoreId" aggregationType="sum">
+        <descriptions defaultDescription="StoreId"/>
+      </viewAttribute>
+      <viewAttribute id="StoreName">
+        <descriptions defaultDescription="StoreName"/>
+      </viewAttribute>
+      <viewAttribute id="Country">
+        <descriptions defaultDescription="Country"/>
+      </viewAttribute>
+      <viewAttribute id="City">
+        <descriptions defaultDescription="City"/>
+      </viewAttribute>
+      <viewAttribute id="BookId" aggregationType="sum">
+        <descriptions defaultDescription="BookId"/>
+      </viewAttribute>
+      <viewAttribute id="BookName">
+        <descriptions defaultDescription="BookName"/>
+      </viewAttribute>
+      <viewAttribute id="ISBN">
+        <descriptions defaultDescription="ISBN"/>
+      </viewAttribute>
+      <viewAttribute id="Price" aggregationType="sum">
+        <descriptions defaultDescription="Price"/>
+      </viewAttribute>
+      <viewAttribute id="PriceCurrency">
+        <descriptions defaultDescription="PriceCurrency"/>
+      </viewAttribute>
+      <viewAttribute id="AuthorName">
+        <descriptions defaultDescription="AuthorName"/>
+      </viewAttribute>
+      <viewAttribute id="TransactionId" aggregationType="sum">
+        <descriptions defaultDescription="TransactionId"/>
+      </viewAttribute>
+      <viewAttribute id="TransactionDate">
+        <descriptions defaultDescription="TransactionDate"/>
+      </viewAttribute>
+      <viewAttribute id="Discount" aggregationType="sum">
+        <descriptions defaultDescription="Discount"/>
+      </viewAttribute>
+      <viewAttribute id="TransactionId_1" aggregationType="sum">
+        <descriptions defaultDescription="TransactionId_1"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="data_model.Store">
+      <mapping xsi:type="Calculation:AttributeMapping" target="StoreId" source="StoreId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StoreName" source="StoreName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="City" source="City"/>
+    </input>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BookId" source="BookId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BookName" source="BookName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ISBN" source="ISBN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Price" source="Price"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceCurrency" source="PriceCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AuthorName" source="AuthorName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionId" source="TransactionId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionDate" source="TransactionDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Discount" source="Discount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionId_1" source="TransactionId_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StoreId" source="StoreId"/>
+    </input>
+    <joinAttribute name="StoreId"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1_2">
+  <attributes>
+    <attribute id="TransactionId" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TransactionId"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="TransactionId"/>
+    </attribute>
+    <attribute id="TransactionDate" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TransactionDate"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="TransactionDate"/>
+    </attribute>
+  
+    <attribute id="StoreId" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="StoreId"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="StoreId"/>
+    </attribute>
+    <attribute id="BookId" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BookId"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="BookId"/>
+    </attribute>
+    <attribute id="StoreName" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="StoreName"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="StoreName"/>
+    </attribute>
+    <attribute id="Country" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Country"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="Country"/>
+    </attribute>
+    <attribute id="City" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="City"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="City"/>
+    </attribute>
+    <attribute id="BookName" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BookName"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="BookName"/>
+    </attribute>
+    <attribute id="ISBN" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ISBN"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="ISBN"/>
+    </attribute>
+    <attribute id="PriceCurrency" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PriceCurrency"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PriceCurrency"/>
+    </attribute>
+    <attribute id="AuthorName" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AuthorName"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="AuthorName"/>
+    </attribute></attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="Price" order="10" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Price"/>
+      <measureMapping columnObjectName="Join_1_2" columnName="Price"/>
+    </measure>
+    <measure id="Discount" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Discount"/>
+      <measureMapping columnObjectName="Join_1_2" columnName="Discount"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+    <measure id="FinalPrice" order="14" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" length="13" scale="1" expressionLanguage="SQL">
+      <descriptions defaultDescription="FinalPrice">
+        <comment text="Price after discount"/>
+      </descriptions>
+      <formula>&quot;Price&quot;*(100-&quot;Discount&quot;)/100</formula>
+      </measure>
+    <measure id="COUNT_1" order="15" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER" length="">
+      <exceptionAggregation>
+        <attribute attributeName="TransactionId"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="250"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="data_model.Store" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="data_model.Book" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="data_model.BookSales" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

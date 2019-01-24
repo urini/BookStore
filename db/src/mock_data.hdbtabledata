@@ -1,0 +1,82 @@
+{
+	"format_version": 1,
+	"imports": [{
+		"target_table": "data_model.Book",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "books.csv",
+			"has_header": false,
+			"dialect": "HANA",
+			"type_config": {
+				"delimiter": ","
+			}
+		},
+		"import_settings": {
+			"import_columns": ["BookId",
+				"BookName",
+				"ISBN",
+				"Price",
+				"PriceCurrency",
+				"AuthorName"
+			]
+		},
+		"column_mappings": {
+			"BookId": 1,
+			"BookName": 2,
+			"ISBN": 3,
+			"Price": 4,
+			"PriceCurrency": 5,
+			"AuthorName": 6
+		}
+	}, {
+		"target_table": "data_model.Store",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "stores.csv",
+			"has_header": false,
+			"dialect": "HANA",
+			"type_config": {
+				"delimiter": ","
+			}
+		},
+		"import_settings": {
+			"import_columns": ["StoreId",
+				"StoreName",
+				"City",
+				"Country"
+			]
+		},
+		"column_mappings": {
+			"StoreId": 1,
+			"StoreName": 2,
+			"City": 3,
+			"Country": 4
+		}
+	}, {
+		"target_table": "data_model.BookSales",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "transactions.csv",
+			"has_header": false,
+			"dialect": "HANA",
+			"type_config": {
+				"delimiter": ","
+			}
+		},
+		"import_settings": {
+			"import_columns": ["TransactionId",
+				"BookId",
+				"StoreId",
+				"TransactionDate",
+				"Discount"
+			]
+		},
+		"column_mappings": {
+			"TransactionId": 1,
+			"BookId": 2,
+			"StoreId": 3,
+			"TransactionDate": 4,
+			"Discount": 5
+		}
+	}]
+}

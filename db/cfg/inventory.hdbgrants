@@ -1,0 +1,7 @@
+{
+  "ServiceName_1": {
+     "object_owner": {
+       "container_roles":["admin#"]
+     }
+   } 
+}

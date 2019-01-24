@@ -1,0 +1,3 @@
+service { 
+	"sales_report" as "booksales" keys generate local "ID";
+}
